@@ -9,7 +9,7 @@ Simple plugin to calculate the CRC of selected text.
 ![Screenshot](images/screenshot1.gif "Convert text to CRC")
 ## Release Notes
 
-### 0.1.0
+### 0.1.1
 
 Initial release
 
