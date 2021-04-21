@@ -6,8 +6,7 @@ Simple plugin to convert calculate the CRC of selected text.
 - 16 bit CRC algorithms (CCITT-FALSE, ARC, 0xBB3D, AUG-CCITT, BUYPASS, CDMA2000, DDS-110, DECT-R, DECT-X, DNP, EN-13757, GENIBUS, MAXIM, MCRF4XX, RIELLO, T10-DIF, TELEDISK, TMS37157, USB, A, KERMIT, MODBUS, X-25, XMODEM)
 - 8 bit CRC algorithms (CDMA2000, DARC, DVB-S2, EBU, I-CODE, ITU, MAXIM. ROHX, WCDMA)
 
-\!\[Convert text to CRC\]\(images/screenshot1.gif\)
-
+![Screenshot](images/screenshot1.gif "Convert text to CRC")
 ## Release Notes
 
 ### 0.1.0
