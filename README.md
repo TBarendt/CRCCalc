@@ -1,5 +1,5 @@
 # CRCCalc README
-Simple plugin to convert calculate the CRC of selected text.
+Simple plugin to calculate the CRC of selected text.
 ## Features
 
 - 32 bit CRC algorithms (BZIP2, C, D, MPEG-2, POSIX, Q, JAMCRC, XFER)
