@@ -1,5 +1,5 @@
 # CRCCalc README
-Simple plugin to calculate the CRC of selected text.
+Simple plugin to calculate the CRC of a document or selected text
 ## Features
 
 - 32 bit CRC algorithms (BZIP2, C, D, MPEG-2, POSIX, Q, JAMCRC, XFER)
@@ -8,6 +8,12 @@ Simple plugin to calculate the CRC of selected text.
 
 ![Screenshot](images/screenshot1.gif "Convert text to CRC")
 ## Release Notes
+
+### 0.2.0
+
+- Added support to calculate RC for the whole document
+- New setting to be switch between Hexadecimal and Decimal output
+- New setting to display checksum as a information box instead of replacing text
 
 ### 0.1.1
 

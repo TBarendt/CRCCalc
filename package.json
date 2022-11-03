@@ -3,7 +3,7 @@
 	"publisher": "TobiasBarendt",
 	"displayName": "CRCCalc",
 	"description": "CRC calculator",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"engines": {
 		"vscode": "^1.55.0"
 	},
@@ -15,388 +15,780 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"configuration": {
+			"title": "CrcCalc",
+			"properties": {
+				"CrcCalc.settings.hexadecimal": {
+					"type": "boolean",
+					"default": true,
+					"description": "Specifies whether to show hax values in hexadecimal format"
+				},
+				"CrcCalc.settings.replace selection": {
+					"type": "boolean",
+					"default": false,
+					"description": "Replace the current selection with the crc checksum"
+				}
+			}
+		},
 		"commands": [
 			{
-				"command": "crccalc.CRC-32",
+				"command": "crccalc.CRC-32.document",
 				"title": "CRC-32"
 			},
 			{
-				"command": "crccalc.CRC-32/BZIP2",
+				"command": "crccalc.CRC-32/BZIP2.document",
 				"title": "CRC-32/BZIP2"
 			},
 			{
-				"command": "crccalc.CRC-32C",
+				"command": "crccalc.CRC-32C.document",
 				"title": "CRC-32C"
 			},
 			{
-				"command": "crccalc.CRC-32D",
+				"command": "crccalc.CRC-32D.document",
 				"title": "CRC-32D"
 			},
 			{
-				"command": "crccalc.CRC-32/MPEG-2",
+				"command": "crccalc.CRC-32/MPEG-2.document",
 				"title": "CRC-32/MPEG-2"
 			},
 			{
-				"command": "crccalc.CRC-32/POSIX",
+				"command": "crccalc.CRC-32/POSIX.document",
 				"title": "CRC-32/POSIX"
 			},
 			{
-				"command": "crccalc.CRC-32Q",
+				"command": "crccalc.CRC-32Q.document",
 				"title": "CRC-32Q"
 			},
 			{
-				"command": "crccalc.CRC-32/JAMCRC",
+				"command": "crccalc.CRC-32/JAMCRC.document",
 				"title": "CRC-32/JAMCRC"
 			},
 			{
-				"command": "crccalc.CRC-32/XFER",
+				"command": "crccalc.CRC-32/XFER.document",
 				"title": "CRC-32/XFER"
 			},
 			{
-				"command": "crccalc.CRC-16/ARC",
+				"command": "crccalc.CRC-16/ARC.document",
 				"title": "CRC-16/ARC"
 			},
 			{
-				"command": "crccalc.CRC-16/CCITT-FALSE",
+				"command": "crccalc.CRC-16/CCITT-FALSE.document",
 				"title": "CRC-16/CCITT-FALSE"
 			},
 			{
-				"command": "crccalc.CRC-16/AUG-CCITT",
+				"command": "crccalc.CRC-16/AUG-CCITT.document",
 				"title": "CRC-16/AUG-CCITT"
 			},
 			{
-				"command": "crccalc.CRC-16/BUYPASS",
+				"command": "crccalc.CRC-16/BUYPASS.document",
 				"title": "CRC-16/BUYPASS"
 			},
 			{
-				"command": "crccalc.CRC-16/CDMA2000",
+				"command": "crccalc.CRC-16/CDMA2000.document",
 				"title": "CRC-16/CDMA2000"
 			},
 			{
-				"command": "crccalc.CRC-16/DDS-110",
+				"command": "crccalc.CRC-16/DDS-110.document",
 				"title": "CRC-16/DDS-110"
 			},
 			{
-				"command": "crccalc.CRC-16/DECT-R",
+				"command": "crccalc.CRC-16/DECT-R.document",
 				"title": "CRC-16/DECT-R"
 			},
 			{
-				"command": "crccalc.CRC-16/DECT-X",
+				"command": "crccalc.CRC-16/DECT-X.document",
 				"title": "CRC-16/DECT-X"
 			},
 			{
-				"command": "crccalc.CRC-16/DNP",
+				"command": "crccalc.CRC-16/DNP.document",
 				"title": "CRC-16/DNP"
 			},
 			{
-				"command": "crccalc.CRC-16/EN-13757",
+				"command": "crccalc.CRC-16/EN-13757.document",
 				"title": "CRC-16/EN-13757"
 			},
 			{
-				"command": "crccalc.CRC-16/GENIBUS",
+				"command": "crccalc.CRC-16/GENIBUS.document",
 				"title": "CRC-16/GENIBUS"
 			},
 			{
-				"command": "crccalc.CRC-16/MAXIM",
+				"command": "crccalc.CRC-16/MAXIM.document",
 				"title": "CRC-16/MAXIM"
 			},
 			{
-				"command": "crccalc.CRC-16/MCRF4XX",
+				"command": "crccalc.CRC-16/MCRF4XX.document",
 				"title": "CRC-16/MCRF4XX"
 			},
 			{
-				"command": "crccalc.CRC-16/RIELLO",
+				"command": "crccalc.CRC-16/RIELLO.document",
 				"title": "CRC-16/RIELLO"
 			},
 			{
-				"command": "crccalc.CRC-16/T10-DIF",
+				"command": "crccalc.CRC-16/T10-DIF.document",
 				"title": "CRC-16/T10-DIF"
 			},
 			{
-				"command": "crccalc.CRC-16/TELEDISK",
+				"command": "crccalc.CRC-16/TELEDISK.document",
 				"title": "CRC-16/TELEDISK"
 			},
 			{
-				"command": "crccalc.CRC-16/TMS37157",
+				"command": "crccalc.CRC-16/TMS37157.document",
 				"title": "CRC-16/TMS37157"
 			},
 			{
-				"command": "crccalc.CRC-16/USB",
+				"command": "crccalc.CRC-16/USB.document",
 				"title": "CRC-16/USB"
 			},
 			{
-				"command": "crccalc.CRC-A",
+				"command": "crccalc.CRC-A.document",
 				"title": "CRC-A"
 			},
 			{
-				"command": "crccalc.CRC-16/KERMIT",
+				"command": "crccalc.CRC-16/KERMIT.document",
 				"title": "CRC-16/KERMIT"
 			},
 			{
-				"command": "crccalc.CRC-16/MODBUS",
+				"command": "crccalc.CRC-16/MODBUS.document",
 				"title": "CRC-16/MODBUS"
 			},
 			{
-				"command": "crccalc.CRC-16/X-25",
+				"command": "crccalc.CRC-16/X-25.document",
 				"title": "CRC-16/X-25"
 			},
 			{
-				"command": "crccalc.CRC-16/XMODEM",
+				"command": "crccalc.CRC-16/XMODEM.document",
 				"title": "CRC-16/XMODEM"
 			},
 			{
-				"command": "crccalc.CRC-8",
+				"command": "crccalc.CRC-8.document",
 				"title": "CRC-8"
 			},
 			{
-				"command": "crccalc.CRC-8/CDMA2000",
+				"command": "crccalc.CRC-8/CDMA2000.document",
 				"title": "CRC-8/CDMA2000"
 			},
 			{
-				"command": "crccalc.CRC-8/DARC",
+				"command": "crccalc.CRC-8/DARC.document",
 				"title": "CRC-8/DARC"
 			},
 			{
-				"command": "crccalc.CRC-8/DVB-S2",
+				"command": "crccalc.CRC-8/DVB-S2.document",
 				"title": "CRC-8/DVB-S2"
 			},
 			{
-				"command": "crccalc.CRC-8/EBU",
+				"command": "crccalc.CRC-8/EBU.document",
 				"title": "CRC-8/EBU"
 			},
 			{
-				"command": "crccalc.CRC-8/I-CODE",
+				"command": "crccalc.CRC-8/I-CODE.document",
 				"title": "CRC-8/I-CODE"
 			},
 			{
-				"command": "crccalc.CRC-8/ITU",
+				"command": "crccalc.CRC-8/ITU.document",
 				"title": "CRC-8/ITU"
 			},
 			{
-				"command": "crccalc.CRC-8/MAXIM",
+				"command": "crccalc.CRC-8/MAXIM.document",
 				"title": "CRC-8/MAXIM"
 			},
 			{
-				"command": "crccalc.CRC-8/ROHC",
+				"command": "crccalc.CRC-8/ROHC.document",
 				"title": "CRC-8/ROHC"
 			},
 			{
-				"command": "crccalc.CRC-8/WCDMA",
+				"command": "crccalc.CRC-8/WCDMA.document",
+				"title": "CRC-8/WCDMA"
+			},
+			{
+				"command": "crccalc.CRC-32.selection",
+				"title": "CRC-32"
+			},
+			{
+				"command": "crccalc.CRC-32/BZIP2.selection",
+				"title": "CRC-32/BZIP2"
+			},
+			{
+				"command": "crccalc.CRC-32C.selection",
+				"title": "CRC-32C"
+			},
+			{
+				"command": "crccalc.CRC-32D.selection",
+				"title": "CRC-32D"
+			},
+			{
+				"command": "crccalc.CRC-32/MPEG-2.selection",
+				"title": "CRC-32/MPEG-2"
+			},
+			{
+				"command": "crccalc.CRC-32/POSIX.selection",
+				"title": "CRC-32/POSIX"
+			},
+			{
+				"command": "crccalc.CRC-32Q.selection",
+				"title": "CRC-32Q"
+			},
+			{
+				"command": "crccalc.CRC-32/JAMCRC.selection",
+				"title": "CRC-32/JAMCRC"
+			},
+			{
+				"command": "crccalc.CRC-32/XFER.selection",
+				"title": "CRC-32/XFER"
+			},
+			{
+				"command": "crccalc.CRC-16/ARC.selection",
+				"title": "CRC-16/ARC"
+			},
+			{
+				"command": "crccalc.CRC-16/CCITT-FALSE.selection",
+				"title": "CRC-16/CCITT-FALSE"
+			},
+			{
+				"command": "crccalc.CRC-16/AUG-CCITT.selection",
+				"title": "CRC-16/AUG-CCITT"
+			},
+			{
+				"command": "crccalc.CRC-16/BUYPASS.selection",
+				"title": "CRC-16/BUYPASS"
+			},
+			{
+				"command": "crccalc.CRC-16/CDMA2000.selection",
+				"title": "CRC-16/CDMA2000"
+			},
+			{
+				"command": "crccalc.CRC-16/DDS-110.selection",
+				"title": "CRC-16/DDS-110"
+			},
+			{
+				"command": "crccalc.CRC-16/DECT-R.selection",
+				"title": "CRC-16/DECT-R"
+			},
+			{
+				"command": "crccalc.CRC-16/DECT-X.selection",
+				"title": "CRC-16/DECT-X"
+			},
+			{
+				"command": "crccalc.CRC-16/DNP.selection",
+				"title": "CRC-16/DNP"
+			},
+			{
+				"command": "crccalc.CRC-16/EN-13757.selection",
+				"title": "CRC-16/EN-13757"
+			},
+			{
+				"command": "crccalc.CRC-16/GENIBUS.selection",
+				"title": "CRC-16/GENIBUS"
+			},
+			{
+				"command": "crccalc.CRC-16/MAXIM.selection",
+				"title": "CRC-16/MAXIM"
+			},
+			{
+				"command": "crccalc.CRC-16/MCRF4XX.selection",
+				"title": "CRC-16/MCRF4XX"
+			},
+			{
+				"command": "crccalc.CRC-16/RIELLO.selection",
+				"title": "CRC-16/RIELLO"
+			},
+			{
+				"command": "crccalc.CRC-16/T10-DIF.selection",
+				"title": "CRC-16/T10-DIF"
+			},
+			{
+				"command": "crccalc.CRC-16/TELEDISK.selection",
+				"title": "CRC-16/TELEDISK"
+			},
+			{
+				"command": "crccalc.CRC-16/TMS37157.selection",
+				"title": "CRC-16/TMS37157"
+			},
+			{
+				"command": "crccalc.CRC-16/USB.selection",
+				"title": "CRC-16/USB"
+			},
+			{
+				"command": "crccalc.CRC-A.selection",
+				"title": "CRC-A"
+			},
+			{
+				"command": "crccalc.CRC-16/KERMIT.selection",
+				"title": "CRC-16/KERMIT"
+			},
+			{
+				"command": "crccalc.CRC-16/MODBUS.selection",
+				"title": "CRC-16/MODBUS"
+			},
+			{
+				"command": "crccalc.CRC-16/X-25.selection",
+				"title": "CRC-16/X-25"
+			},
+			{
+				"command": "crccalc.CRC-16/XMODEM.selection",
+				"title": "CRC-16/XMODEM"
+			},
+			{
+				"command": "crccalc.CRC-8.selection",
+				"title": "CRC-8"
+			},
+			{
+				"command": "crccalc.CRC-8/CDMA2000.selection",
+				"title": "CRC-8/CDMA2000"
+			},
+			{
+				"command": "crccalc.CRC-8/DARC.selection",
+				"title": "CRC-8/DARC"
+			},
+			{
+				"command": "crccalc.CRC-8/DVB-S2.selection",
+				"title": "CRC-8/DVB-S2"
+			},
+			{
+				"command": "crccalc.CRC-8/EBU.selection",
+				"title": "CRC-8/EBU"
+			},
+			{
+				"command": "crccalc.CRC-8/I-CODE.selection",
+				"title": "CRC-8/I-CODE"
+			},
+			{
+				"command": "crccalc.CRC-8/ITU.selection",
+				"title": "CRC-8/ITU"
+			},
+			{
+				"command": "crccalc.CRC-8/MAXIM.selection",
+				"title": "CRC-8/MAXIM"
+			},
+			{
+				"command": "crccalc.CRC-8/ROHC.selection",
+				"title": "CRC-8/ROHC"
+			},
+			{
+				"command": "crccalc.CRC-8/WCDMA.selection",
 				"title": "CRC-8/WCDMA"
 			}
 		],
 		"menus": {
 			"editor/context": [
 				{
-					"submenu": "CrcCalc.root",
+					"submenu": "CrcCalc.root.selection",
 					"when": "editorHasSelection",
+					"group": "CrcCalc"
+				},
+				{
+					"submenu": "CrcCalc.root.document",
+					"when": "editorFocus",
 					"group": "CrcCalc"
 				}
 			],
-			"CrcCalc.root":[
+			"CrcCalc.root.document":[
 				{
-					"submenu": "CrcCalc.32",
+					"submenu": "CrcCalc.32.document",
 					"group": "CrcCalc.bits@1"
 				},
 				{
-					"submenu": "CrcCalc.16",
+					"submenu": "CrcCalc.16.document",
 					"group": "CrcCalc.bits@2"
 				},
 				{
-					"submenu": "CrcCalc.8",
+					"submenu": "CrcCalc.8.document",
 					"group": "CrcCalc.bits@3"
 				}
 			],
-			"CrcCalc.32":[
+			"CrcCalc.root.selection":[
 				{
-					"command": "crccalc.CRC-32",
-					"group": "32@1"
+					"submenu": "CrcCalc.32.selection",
+					"group": "CrcCalc.bits@1"
 				},
 				{
-					"command": "crccalc.CRC-32/BZIP2",
-					"group": "32@2"
+					"submenu": "CrcCalc.16.selection",
+					"group": "CrcCalc.bits@2"
 				},
 				{
-					"command": "crccalc.CRC-32C",
-					"group": "32@3"
-				},
-				{
-					"command": "crccalc.CRC-32D",
-					"group": "32@4"
-				},
-				{
-					"command": "crccalc.CRC-32/MPEG-2",
-					"group": "32@5"
-				},
-				{
-					"command": "crccalc.CRC-32/POSIX",
-					"group": "32@6"
-				},
-				{
-					"command": "crccalc.CRC-32Q",
-					"group": "32@7"
-				},
-				{
-					"command": "crccalc.CRC-32/JAMCRC",
-					"group": "32@8"
-				},
-				{
-					"command": "crccalc.CRC-32/XFER",
-					"group": "32@9"
+					"submenu": "CrcCalc.8.selection",
+					"group": "CrcCalc.bits@3"
 				}
 			],
-			"CrcCalc.16":[
+			"CrcCalc.32.document":[
 				{
-					"command": "crccalc.CRC-16/ARC",
-					"group": "16@1"
+					"command": "crccalc.CRC-32.document",
+					"group": "crccalc.32.document@1"
 				},
 				{
-					"command": "crccalc.CRC-16/CCITT-FALSE",
-					"group": "16@2"
+					"command": "crccalc.CRC-32/BZIP2.document",
+					"group": "crccalc.32.document@2"
 				},
 				{
-					"command": "crccalc.CRC-16/AUG-CCITT",
-					"group": "16@3"
+					"command": "crccalc.CRC-32C.document",
+					"group": "crccalc.32.document@3"
 				},
 				{
-					"command": "crccalc.CRC-16/BUYPASS",
-					"group": "16@4"
+					"command": "crccalc.CRC-32D.document",
+					"group": "crccalc.32.document@4"
 				},
 				{
-					"command": "crccalc.CRC-16/CDMA2000",
-					"group": "16@5"
+					"command": "crccalc.CRC-32/MPEG-2.document",
+					"group": "crccalc.32.document@5"
 				},
 				{
-					"command": "crccalc.CRC-16/DDS-110",
-					"group": "16@6"
+					"command": "crccalc.CRC-32/POSIX.document",
+					"group": "crccalc.32.document@6"
 				},
 				{
-					"command": "crccalc.CRC-16/DECT-R",
-					"group": "16@7"
+					"command": "crccalc.CRC-32Q.document",
+					"group": "crccalc.32.document@7"
 				},
 				{
-					"command": "crccalc.CRC-16/DECT-X",
-					"group": "16@8"
+					"command": "crccalc.CRC-32/JAMCRC.document",
+					"group": "crccalc.32.document@8"
 				},
 				{
-					"command": "crccalc.CRC-16/DNP",
-					"group": "16@9"
-				},
-				{
-					"command": "crccalc.CRC-16/EN-13757",
-					"group": "16@10"
-				},
-				{
-					"command": "crccalc.CRC-16/GENIBUS",
-					"group": "16@11"
-				},
-				{
-					"command": "crccalc.CRC-16/MAXIM",
-					"group": "16@12"
-				},
-				{
-					"command": "crccalc.CRC-16/MCRF4XX",
-					"group": "16@13"
-				},
-				{
-					"command": "crccalc.CRC-16/RIELLO",
-					"group": "16@14"
-				},
-				{
-					"command": "crccalc.CRC-16/T10-DIF",
-					"group": "16@15"
-				},
-				{
-					"command": "crccalc.CRC-16/TELEDISK",
-					"group": "16@16"
-				},
-				{
-					"command": "crccalc.CRC-16/TMS37157",
-					"group": "16@17"
-				},
-				{
-					"command": "crccalc.CRC-16/USB",
-					"group": "16@18"
-				},
-				{
-					"command": "crccalc.CRC-A",
-					"group": "16@19"
-				},
-				{
-					"command": "crccalc.CRC-16/KERMIT",
-					"group": "16@20"
-				},
-				{
-					"command": "crccalc.CRC-16/MODBUS",
-					"group": "16@21"
-				},
-				{
-					"command": "crccalc.CRC-16/X-25",
-					"group": "16@22"
-				},
-				{
-					"command": "crccalc.CRC-16/XMODEM",
-					"group": "16@23"
+					"command": "crccalc.CRC-32/XFER.document",
+					"group": "crccalc.32.document@9"
 				}
 			],
-			"CrcCalc.8":[
+			"CrcCalc.32.selection":[
 				{
-					"command": "crccalc.CRC-8",
-					"group": "crccalc.8@1"
+					"command": "crccalc.CRC-32.selection",
+					"group": "crccalc.32.selection@1"
 				},
 				{
-					"command": "crccalc.CRC-8/CDMA2000",
-					"group": "crccalc.8@2"
+					"command": "crccalc.CRC-32/BZIP2.selection",
+					"group": "crccalc.32.selection@2"
 				},
 				{
-					"command": "crccalc.CRC-8/DARC",
-					"group": "crccalc.8@3"
+					"command": "crccalc.CRC-32C.selection",
+					"group": "crccalc.32.selection@3"
 				},
 				{
-					"command": "crccalc.CRC-8/DVB-S2",
-					"group": "crccalc.8@4"
+					"command": "crccalc.CRC-32D.selection",
+					"group": "crccalc.32.selection@4"
 				},
 				{
-					"command": "crccalc.CRC-8/EBU",
-					"group": "crccalc.8@5"
+					"command": "crccalc.CRC-32/MPEG-2.selection",
+					"group": "crccalc.32.selection@5"
 				},
 				{
-					"command": "crccalc.CRC-8/I-CODE",
-					"group": "crccalc.8@6"
+					"command": "crccalc.CRC-32/POSIX.selection",
+					"group": "crccalc.32.selection@6"
 				},
 				{
-					"command": "crccalc.CRC-8/ITU",
-					"group": "crccalc.8@7"
+					"command": "crccalc.CRC-32Q.selection",
+					"group": "crccalc.32.selection@7"
 				},
 				{
-					"command": "crccalc.CRC-8/MAXIM",
-					"group": "crccalc.8@8"
+					"command": "crccalc.CRC-32/JAMCRC.selection",
+					"group": "crccalc.32.selection@8"
 				},
 				{
-					"command": "crccalc.CRC-8/ROHC",
-					"group": "crccalc.8@9"
-				},
-				{
-					"command": "crccalc.CRC-8/WCDMA",
-					"group": "crccalc.8@10"
+					"command": "crccalc.CRC-32/XFER.selection",
+					"group": "crccalc.32.selection@9"
 				}
-			]	
+			],
+			"CrcCalc.16.document":[
+				{
+					"command": "crccalc.CRC-16/ARC.document",
+					"group": "crccalc.16.document@1"
+				},
+				{
+					"command": "crccalc.CRC-16/CCITT-FALSE.document",
+					"group": "crccalc.16.document@2"
+				},
+				{
+					"command": "crccalc.CRC-16/AUG-CCITT.document",
+					"group": "crccalc.16.document@3"
+				},
+				{
+					"command": "crccalc.CRC-16/BUYPASS.document",
+					"group": "crccalc.16.document@4"
+				},
+				{
+					"command": "crccalc.CRC-16/CDMA2000.document",
+					"group": "crccalc.16.document@5"
+				},
+				{
+					"command": "crccalc.CRC-16/DDS-110.document",
+					"group": "crccalc.16.document@6"
+				},
+				{
+					"command": "crccalc.CRC-16/DECT-R.document",
+					"group": "crccalc.16.document@7"
+				},
+				{
+					"command": "crccalc.CRC-16/DECT-X.document",
+					"group": "crccalc.16.document@8"
+				},
+				{
+					"command": "crccalc.CRC-16/DNP.document",
+					"group": "crccalc.16.document@9"
+				},
+				{
+					"command": "crccalc.CRC-16/EN-13757.document",
+					"group": "crccalc.16.document@10"
+				},
+				{
+					"command": "crccalc.CRC-16/GENIBUS.document",
+					"group": "crccalc.16.document@11"
+				},
+				{
+					"command": "crccalc.CRC-16/MAXIM.document",
+					"group": "crccalc.16.document@12"
+				},
+				{
+					"command": "crccalc.CRC-16/MCRF4XX.document",
+					"group": "crccalc.16.document@13"
+				},
+				{
+					"command": "crccalc.CRC-16/RIELLO.document",
+					"group": "crccalc.16.document@14"
+				},
+				{
+					"command": "crccalc.CRC-16/T10-DIF.document",
+					"group": "crccalc.16.document@15"
+				},
+				{
+					"command": "crccalc.CRC-16/TELEDISK.document",
+					"group": "crccalc.16.document@16"
+				},
+				{
+					"command": "crccalc.CRC-16/TMS37157.document",
+					"group": "crccalc.16.document@17"
+				},
+				{
+					"command": "crccalc.CRC-16/USB.document",
+					"group": "crccalc.16.document@18"
+				},
+				{
+					"command": "crccalc.CRC-A.document",
+					"group": "crccalc.16.document@19"
+				},
+				{
+					"command": "crccalc.CRC-16/KERMIT.document",
+					"group": "crccalc.16.document@20"
+				},
+				{
+					"command": "crccalc.CRC-16/MODBUS.document",
+					"group": "crccalc.16.document@21"
+				},
+				{
+					"command": "crccalc.CRC-16/X-25.document",
+					"group": "crccalc.16.document@22"
+				},
+				{
+					"command": "crccalc.CRC-16/XMODEM.document",
+					"group": "crccalc.16.document@23"
+				}
+			],
+			"CrcCalc.16.selection":[
+				{
+					"command": "crccalc.CRC-16/ARC.selection",
+					"group": "crccalc.16.selection@1"
+				},
+				{
+					"command": "crccalc.CRC-16/CCITT-FALSE.selection",
+					"group": "crccalc.16.selection@2"
+				},
+				{
+					"command": "crccalc.CRC-16/AUG-CCITT.selection",
+					"group": "crccalc.16.selection@3"
+				},
+				{
+					"command": "crccalc.CRC-16/BUYPASS.selection",
+					"group": "crccalc.16.selection@4"
+				},
+				{
+					"command": "crccalc.CRC-16/CDMA2000.selection",
+					"group": "crccalc.16.selection@5"
+				},
+				{
+					"command": "crccalc.CRC-16/DDS-110.selection",
+					"group": "crccalc.16.selection@6"
+				},
+				{
+					"command": "crccalc.CRC-16/DECT-R.selection",
+					"group": "crccalc.16.selection@7"
+				},
+				{
+					"command": "crccalc.CRC-16/DECT-X.selection",
+					"group": "crccalc.16.selection@8"
+				},
+				{
+					"command": "crccalc.CRC-16/DNP.selection",
+					"group": "crccalc.16.selection@9"
+				},
+				{
+					"command": "crccalc.CRC-16/EN-13757.selection",
+					"group": "crccalc.16.selection@10"
+				},
+				{
+					"command": "crccalc.CRC-16/GENIBUS.selection",
+					"group": "crccalc.16.selection@11"
+				},
+				{
+					"command": "crccalc.CRC-16/MAXIM.selection",
+					"group": "crccalc.16.selection@12"
+				},
+				{
+					"command": "crccalc.CRC-16/MCRF4XX.selection",
+					"group": "crccalc.16.selection@13"
+				},
+				{
+					"command": "crccalc.CRC-16/RIELLO.selection",
+					"group": "crccalc.16.selection@14"
+				},
+				{
+					"command": "crccalc.CRC-16/T10-DIF.selection",
+					"group": "crccalc.16.selection@15"
+				},
+				{
+					"command": "crccalc.CRC-16/TELEDISK.selection",
+					"group": "crccalc.16.selection@16"
+				},
+				{
+					"command": "crccalc.CRC-16/TMS37157.selection",
+					"group": "crccalc.16.selection@17"
+				},
+				{
+					"command": "crccalc.CRC-16/USB.selection",
+					"group": "crccalc.16.selection@18"
+				},
+				{
+					"command": "crccalc.CRC-A.selection",
+					"group": "crccalc.16.selection@19"
+				},
+				{
+					"command": "crccalc.CRC-16/KERMIT.selection",
+					"group": "crccalc.16.selection@20"
+				},
+				{
+					"command": "crccalc.CRC-16/MODBUS.selection",
+					"group": "crccalc.16.selection@21"
+				},
+				{
+					"command": "crccalc.CRC-16/X-25.selection",
+					"group": "crccalc.16.selection@22"
+				},
+				{
+					"command": "crccalc.CRC-16/XMODEM.selection",
+					"group": "crccalc.16.selection@23"
+				}
+			],
+			"CrcCalc.8.document":[
+				{
+					"command": "crccalc.CRC-8.document",
+					"group": "crccalc.8.document@1"
+				},
+				{
+					"command": "crccalc.CRC-8/CDMA2000.document",
+					"group": "crccalc.8.document@2"
+				},
+				{
+					"command": "crccalc.CRC-8/DARC.document",
+					"group": "crccalc.8.document@3"
+				},
+				{
+					"command": "crccalc.CRC-8/DVB-S2.document",
+					"group": "crccalc.8.document@4"
+				},
+				{
+					"command": "crccalc.CRC-8/EBU.document",
+					"group": "crccalc.8.document@5"
+				},
+				{
+					"command": "crccalc.CRC-8/I-CODE.document",
+					"group": "crccalc.8.document@6"
+				},
+				{
+					"command": "crccalc.CRC-8/ITU.document",
+					"group": "crccalc.8.document@7"
+				},
+				{
+					"command": "crccalc.CRC-8/MAXIM.document",
+					"group": "crccalc.8.document@8"
+				},
+				{
+					"command": "crccalc.CRC-8/ROHC.document",
+					"group": "crccalc.8.document@9"
+				},
+				{
+					"command": "crccalc.CRC-8/WCDMA.document",
+					"group": "crccalc.8.document@10"
+				}
+			],
+			"CrcCalc.8.selection":[
+				{
+					"command": "crccalc.CRC-8.selection",
+					"group": "crccalc.8.selection@1"
+				},
+				{
+					"command": "crccalc.CRC-8/CDMA2000.selection",
+					"group": "crccalc.8.selection@2"
+				},
+				{
+					"command": "crccalc.CRC-8/DARC.selection",
+					"group": "crccalc.8.selection@3"
+				},
+				{
+					"command": "crccalc.CRC-8/DVB-S2.selection",
+					"group": "crccalc.8.selection@4"
+				},
+				{
+					"command": "crccalc.CRC-8/EBU.selection",
+					"group": "crccalc.8.selection@5"
+				},
+				{
+					"command": "crccalc.CRC-8/I-CODE.selection",
+					"group": "crccalc.8.selection@6"
+				},
+				{
+					"command": "crccalc.CRC-8/ITU.selection",
+					"group": "crccalc.8.selection@7"
+				},
+				{
+					"command": "crccalc.CRC-8/MAXIM.selection",
+					"group": "crccalc.8.selection@8"
+				},
+				{
+					"command": "crccalc.CRC-8/ROHC.selection",
+					"group": "crccalc.8.selection@9"
+				},
+				{
+					"command": "crccalc.CRC-8/WCDMA.selection",
+					"group": "crccalc.8.selection@10"
+				}
+			]
 		},
 		"submenus": [
 			{
-				"id": "CrcCalc.root",
-				"label": "Crc"
+				"id": "CrcCalc.root.document",
+				"label": "Crc document"
 			},
 			{
-				"id": "CrcCalc.32",
+				"id": "CrcCalc.root.selection",
+				"label": "Crc selection"
+			},
+			{
+				"id": "CrcCalc.32.document",
 				"label": "CRC-32"
 			},
 			{
-				"id": "CrcCalc.16",
+				"id": "CrcCalc.16.document",
 				"label": "CRC-16"
 			},
 			{
-				"id": "CrcCalc.8",
+				"id": "CrcCalc.8.document",
+				"label": "CRC-8"
+			},
+			{
+				"id": "CrcCalc.32.selection",
+				"label": "CRC-32"
+			},
+			{
+				"id": "CrcCalc.16.selection",
+				"label": "CRC-16"
+			},
+			{
+				"id": "CrcCalc.8.selection",
 				"label": "CRC-8"
 			}
 		]

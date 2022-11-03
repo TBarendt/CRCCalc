@@ -82,12 +82,13 @@ export function activate(context: vscode.ExtensionContext)
 	for(var i = 0; i < listOfCRC.length; i++)
 	{
 		let crcTable = listOfCRC[i];
-		const cmdFunc = () =>
+		const cmdFuncSelection = () =>
 		{
 			var editor = vscode.window.activeTextEditor;
 			if(!editor)
 				return;
-
+			
+			// Replace selections
 			editor.selections.forEach((selection) =>
 			{
 				var editor = vscode.window.activeTextEditor;
@@ -108,25 +109,83 @@ export function activate(context: vscode.ExtensionContext)
 
 					
 					let crc = crcTable.Compute(text);
-					if(crcTable.Bits == 32)
+					let crcText = "";
+					if (vscode.workspace.getConfiguration("CrcCalc.settings").get("hexadecimal", true))
 					{
-						let crc1 = (crc & 0xFFFF0000) >>> 16;
-						let crc2 = crc & 0xFFFF;
-						selectedText.replace(selection, "0x" + PadString(crc1.toString(16), 4, "0").toUpperCase() + PadString(crc2.toString(16), 4, "0").toUpperCase() + " /*" + text + "*/");
+						if(crcTable.Bits == 32)
+						{
+							let crc1 = (crc & 0xFFFF0000) >>> 16;
+							let crc2 = crc & 0xFFFF;
+							crcText = crcText + "0x" + PadString(crc1.toString(16), 4, "0").toUpperCase() + PadString(crc2.toString(16), 4, "0").toUpperCase();
+						}
+						else if(crcTable.Bits == 16)
+						{
+							crcText = crcText + "0x" + PadString(crc.toString(16), 4, "0").toUpperCase();
+						}
+						else if(crcTable.Bits == 8)
+						{
+							crcText = crcText + "0x" + PadString(crc.toString(16), 2, "0").toUpperCase();
+						}
 					}
-					else if(crcTable.Bits == 16)
+					else
 					{
-						selectedText.replace(selection, "0x" + PadString(crc.toString(16), 4, "0").toUpperCase() + " /*" + text + "*/");
+						crcText = crcText + crc.toString();
 					}
-					else if(crcTable.Bits == 8)
+
+					if (vscode.workspace.getConfiguration("CrcCalc.settings").get("replace selection", false))
 					{
-						selectedText.replace(selection, "0x" + PadString(crc.toString(16), 2, "0").toUpperCase() + " /*" + text + "*/");
+						selectedText.replace(selection, crcText + " /*" + text + "*/");
+					}
+					else
+					{
+						crcText = crcTable.name + " = " + crcText;
+						vscode.window.showInformationMessage(crcText);
 					}
 				});
 			});
 		}
 
-		context.subscriptions.push(vscode.commands.registerCommand("crccalc." + crcTable.name, cmdFunc));
+		const cmdFuncDocument = () =>
+		{
+			var editor = vscode.window.activeTextEditor;
+			if(!editor)
+				return;
+
+			var text = editor.document.getText();
+			function PadString(str: string, minLength: number, symbol: string)
+			{
+				var zero = 1 + minLength - str.toString().length;
+				return Array(+(zero > 0 && zero)).join(symbol) + str;
+			}
+
+			let crc = crcTable.Compute(text);
+			let crcText = crcTable.name + " = ";
+			if (vscode.workspace.getConfiguration("CrcCalc.settings").get("hexadecimal", true))
+			{
+				if(crcTable.Bits == 32)
+				{
+					let crc1 = (crc & 0xFFFF0000) >>> 16;
+					let crc2 = crc & 0xFFFF;
+					crcText = crcText + "0x" + PadString(crc1.toString(16), 4, "0").toUpperCase() + PadString(crc2.toString(16), 4, "0").toUpperCase();
+				}
+				else if(crcTable.Bits == 16)
+				{
+					crcText = crcText + "0x" + PadString(crc.toString(16), 4, "0").toUpperCase();
+				}
+				else if(crcTable.Bits == 8)
+				{
+					crcText = crcText + "0x" + PadString(crc.toString(16), 2, "0").toUpperCase();
+				}
+			}
+			else
+			{
+				crcText = crcText + crc.toString();
+			}
+			vscode.window.showInformationMessage(crcText);
+		};
+
+		context.subscriptions.push(vscode.commands.registerCommand("crccalc." + crcTable.name + ".selection", cmdFuncSelection));
+		context.subscriptions.push(vscode.commands.registerCommand("crccalc." + crcTable.name + ".document", cmdFuncDocument));
 	}
 }
 
